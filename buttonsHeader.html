@@ -3,13 +3,25 @@
         const interiorButton = document.getElementById('interior-button-id');
         const makingButton = document.getElementById('makings-button-id');
         const confectionButton = document.getElementById('confections-button-id');
+        const buttons = [interiorButton, makingButton, confectionButton];
 
-        // Fonction pour afficher/masquer les classes
         function toggleClasses(classesToToggle) {
             classesToToggle.forEach(function (item) {
                 document.querySelectorAll(`.${item.className}`).forEach(function (element) {
                     element.style.display = item.display;
                 });
+            });
+        }
+
+        function highlightButton(activeButton) {
+            buttons.forEach(button => {
+                if (button === activeButton) {
+                    button.classList.add('button-active');
+                    button.classList.remove('button-inactive');
+                } else {
+                    button.classList.remove('button-active');
+                    button.classList.add('button-inactive');
+                }
             });
         }
 
@@ -19,6 +31,7 @@
                 { className: 'makings', display: 'none' },
                 { className: 'splide_test', display: 'none' }
             ]);
+            highlightButton(interiorButton);
         });
 
         makingButton.addEventListener('click', function () {
@@ -27,6 +40,7 @@
                 { className: 'makings', display: 'block' },
                 { className: 'splide_test', display: 'none' }
             ]);
+            highlightButton(makingButton);
         });
 
         confectionButton.addEventListener('click', function () {
@@ -35,6 +49,7 @@
                 { className: 'makings', display: 'none' },
                 { className: 'splide_test', display: 'block' }
             ]);
+            highlightButton(confectionButton);
         });
     });
 </script>
