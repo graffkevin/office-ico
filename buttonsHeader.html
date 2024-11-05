@@ -1,0 +1,40 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const interiorButton = document.getElementById('interior-button-id');
+        const makingButton = document.getElementById('makings-button-id');
+        const confectionButton = document.getElementById('confections-button-id');
+
+        // Fonction pour afficher/masquer les classes
+        function toggleClasses(classesToToggle) {
+            classesToToggle.forEach(function (item) {
+                document.querySelectorAll(`.${item.className}`).forEach(function (element) {
+                    element.style.display = item.display;
+                });
+            });
+        }
+
+        interiorButton.addEventListener('click', function () {
+            toggleClasses([
+                { className: 'interior', display: 'block' },
+                { className: 'makings', display: 'none' },
+                { className: 'splide_test', display: 'none' }
+            ]);
+        });
+
+        makingButton.addEventListener('click', function () {
+            toggleClasses([
+                { className: 'interior', display: 'none' },
+                { className: 'makings', display: 'block' },
+                { className: 'splide_test', display: 'none' }
+            ]);
+        });
+
+        confectionButton.addEventListener('click', function () {
+            toggleClasses([
+                { className: 'interior', display: 'none' },
+                { className: 'makings', display: 'none' },
+                { className: 'splide_test', display: 'block' }
+            ]);
+        });
+    });
+</script>
